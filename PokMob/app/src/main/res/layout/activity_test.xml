@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TestActivity"
+    android:background="@color/background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20px"
+        android:layout_marginBottom="40px"
+        android:textSize="10pt"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Кто ты из покемонов ?"
+        android:layout_gravity="center"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:scrollbarAlwaysDrawVerticalTrack="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Что привлекает тебя больше всего?"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/attract">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="80px"
+                    android:text="Водное поло"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/water"
+                    android:contentDescription="0"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="80px"
+                    android:text="Костры"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/fire"
+                    android:contentDescription="1"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="80px"
+                    android:text="Скалолазание"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/earth"
+                    android:contentDescription="2"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="80px"
+                    android:text="Горные красоты"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/rock"
+                    android:contentDescription="3"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="80px"
+                    android:text="Прохлада"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/ice"
+                    android:contentDescription="4"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="80px"
+                    android:text="Синее небо"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/flying"
+                    android:contentDescription="5"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="80px"
+                    android:text="Мистика"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/ghost"
+                    android:contentDescription="6"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="80px"
+                    android:text="Телекинез"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/psycho"
+                    android:contentDescription="7"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="80px"
+                    android:text="Садоводство"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/grass"
+                    android:contentDescription="8"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="80px"
+                    android:text="Грозы"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/electro"
+                    android:contentDescription="9"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Когда ты просыпаешься?"
+                android:layout_marginTop="50px"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/character_group">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:text="Вечером"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/evening"
+                    android:contentDescription="1"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:text="Днём"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/day"
+                    android:contentDescription="2"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:text="Утром"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/morning"
+                    android:contentDescription="0"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Какой предмет даётся тебе лучше всего?"
+                android:layout_marginTop="50px"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/important_character_group">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:text="Физкультура"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/power"
+                    android:contentDescription="2"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:text="Литература"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/intelligence"
+                    android:contentDescription="0"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:text="Химия"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/chemistry"
+                    android:contentDescription="3"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:text="Физика"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/physics"
+                    android:contentDescription="1"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:text="Психология"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/humanity"
+                    android:contentDescription="4"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:text="Религия"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/religion"
+                    android:contentDescription="5"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Какая погода твоя любимая?"
+                android:layout_marginTop="50px"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/weather_group">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:text="Гроза"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/groza"
+                    android:contentDescription="3"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:text="Дождь"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/rain"
+                    android:contentDescription="2"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:text="Солнце"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/sun"
+                    android:contentDescription="0"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60px"
+                    android:text="Пасмурно"
+                    android:layout_marginTop="10px"
+                    android:id="@+id/pasmurno"
+                    android:contentDescription="1"/>
+
+            </RadioGroup>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/send_answer"
+                android:layout_gravity="center"
+                android:layout_marginTop="50px"
+                android:layout_marginBottom="5px"
+                android:text="Ответить"
+                style="@style/Button"
+                android:backgroundTint="#00FF00"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
