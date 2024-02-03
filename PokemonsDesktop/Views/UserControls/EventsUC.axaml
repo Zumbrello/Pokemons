@@ -1,0 +1,77 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:PokemonsDesktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PokemonsDesktop.Views.UserControls.EventsUC" 
+             x:DataType="viewModels:EventsVM"
+             x:CompileBindings="True"
+             FontFamily="Comic Sans MS" Background="#5D84BA">
+    <UserControl.Resources>
+        <!--Шаблон элемента списка-->       
+        <DataTemplate x:Key="PokemonsListTemplate" x:CompileBindings="False">
+            <Border Name="border" BorderBrush="#3B70BA" BorderThickness="3"
+                    Margin="25 0 25 0" MaxWidth="400" MaxHeight="160"  CornerRadius="5">
+                <Button Name="ListBtn" Tag="{Binding Path=Url}" Background="#5D84BA"
+                        Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},
+                        Path=DataContext.ShowPokemonCommand}" CommandParameter="{Binding}">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="150">
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding Period}" TextAlignment="Center"/>
+                        <Image Stretch="Uniform" Source="{Binding Path=Image}" Height="90" Width="90"
+                               HorizontalAlignment="Center"/>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="{Binding Path=Title }" TextAlignment="Center" VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Path=Number}" TextAlignment="Center" VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" Padding="0 0 0 0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Button>    
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock TextAlignment="Center" Grid.ColumnSpan="8" FontSize="20" FontWeight="Bold">
+            Астрологи объявили сезон повышенной охоты на покемонов, представленных в списке
+        </TextBlock>
+        
+        <ListBox 
+                 Background="#5D84BA"
+                 Grid.Row="1" Grid.RowSpan="4"
+                 Grid.Column="0" Grid.ColumnSpan="8"
+                 ItemsSource="{Binding PokemonsListTiles}"
+                 ItemTemplate="{StaticResource PokemonsListTemplate }">
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            
+        </ListBox>
+    </Grid>
+</UserControl>

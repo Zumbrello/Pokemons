@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Views/MainWindow.axaml" value="PokemonsDesktop.csproj" />
+        <entry key="Views/UserControls/AuthUC.axaml" value="PokemonsDesktop.csproj" />
+        <entry key="Views/UserControls/MenuUC.axaml" value="PokemonsDesktop.csproj" />
+        <entry key="Views/UserControls/PokemonsListUC.axaml" value="PokemonsDesktop.csproj" />
+        <entry key="Views/UserControls/RegisterUC.axaml" value="PokemonsDesktop.csproj" />
+        <entry key="Views/UserControls/UsersCRUDUC.axaml" value="PokemonsDesktop.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

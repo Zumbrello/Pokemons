@@ -1,0 +1,89 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:PokemonsDesktop.ViewModels"
+        xmlns:userControls="clr-namespace:PokemonsDesktop.Views.UserControls"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="600"
+        MinHeight="600" MinWidth="1400"
+        x:Class="PokemonsDesktop.Views.MainWindow"
+        Icon="/Assets/logo.png"
+        Title="Покедекс"
+        FontFamily="Comic Sans MS" Background="#5D84BA">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>            
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>            
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            
+        </Grid.RowDefinitions>
+        
+        <!--Блок меню-->
+        <ContentControl Grid.Column="0" Grid.ColumnSpan="10" 
+                        Grid.Row="0" IsVisible="{Binding MenuIsVisible}"
+                        Content="{Binding CurrentMenuVM}"
+                        VerticalAlignment="Stretch">
+            <ContentControl.DataTemplates>
+                <DataTemplate DataType="{x:Type viewModels:MenuVM}">
+                    <viewModels:MenuUC/>
+                </DataTemplate>
+            </ContentControl.DataTemplates>
+        </ContentControl>
+        
+        <!--Блок с выбранным окном-->
+        <ContentControl Grid.Column="0" Grid.ColumnSpan="10"
+                        Grid.Row="1" Grid.RowSpan="9" 
+                        Content="{Binding CurrentVM}" Name="MainCC"
+                        VerticalAlignment="Stretch"
+                        Margin="0 30 0 0">
+            <ContentControl.DataTemplates>
+                <DataTemplate DataType="{x:Type viewModels:AuthVM}">
+                    <userControls:AuthUC/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:RegisterVM}">
+                    <userControls:RegisterUC/>
+                </DataTemplate>                
+                <DataTemplate DataType="{x:Type viewModels:PokemonsListVM}">
+                    <userControls:PokemonsListUC/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:EventsVM}">
+                    <userControls:EventsUC/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:AccountVM}">
+                    <userControls:AccountUC/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:PokemonVM}">
+                    <userControls:PokemonUC/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:PokemonsCRUDVM}">
+                    <userControls:PokemonsCRUDUC/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:UsersCRUDVM}">
+                    <userControls:UsersCRUDUC/>
+                </DataTemplate>
+            </ContentControl.DataTemplates>
+        </ContentControl>
+    </Grid>
+</Window>

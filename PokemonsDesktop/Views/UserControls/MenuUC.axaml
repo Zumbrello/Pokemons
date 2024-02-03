@@ -1,0 +1,29 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:PokemonsDesktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PokemonsDesktop.ViewModels.MenuUC" 
+             x:DataType="viewModels:MenuVM"
+             x:CompileBindings="True"
+             FontFamily="Comic Sans MS" Background="#5D84BA">
+    <DockPanel HorizontalAlignment="Right">
+        <Button Content="Личный кабинет" Command="{Binding AccountBtn_OnClickCommand}"
+                Margin="0 0 20 0" Background="#3B70BA"/>
+        <Button Content="Создать пользователя" IsVisible="{Binding ShowForAdmin}" Command="{Binding CreateUserBtn_OnClickCommand}"
+                Margin="0 0 20 0" Background="#3B70BA"/>
+        <Button Content="Поиск пользователя" IsVisible="{Binding ShowForAdmin}" Command="{Binding ChangeUserBtn_OnClickCommand}"
+                Margin="0 0 20 0" Background="#3B70BA"/>
+        <Button Content="Добавить покемона" IsVisible="{Binding ShowForAdmin}" Command="{Binding CreatePokemonBtn_OnClickCommand}"
+                Margin="0 0 20 0" Background="#3B70BA"/>
+        <Button Content="Изменить покемона" IsVisible="{Binding ShowForAdmin}" Command="{Binding ChangePokemonBtn_OnClickCommand}"
+                Margin="0 0 20 0" Background="#3B70BA"/>
+        <Button Content="События" Command="{Binding EventsBtn_OnClickCommand}"
+                Margin="0 0 20 0" Background="#3B70BA"/>
+        <Button Content="Покедекс" Command="{Binding PokedexBtn_OnClickCommand}"
+                Margin="0 0 20 0" Background="#3B70BA"/>
+        <Button Content="Выйти" Command="{Binding ExitBtn_OnClickCommand}"
+                Margin="0 0 20 0" Background="#3B70BA"/>
+    </DockPanel>
+</UserControl>

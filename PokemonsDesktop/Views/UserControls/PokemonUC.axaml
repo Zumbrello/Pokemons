@@ -1,0 +1,99 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:PokemonsDesktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PokemonsDesktop.Views.UserControls.PokemonUC"
+             x:DataType="viewModels:PokemonVM"
+             x:CompileBindings="True"
+             FontFamily="Comic Sans MS">
+    <UserControl.Resources>
+        <!--Шаблон элемента списка-->       
+        <DataTemplate x:Key="PokemonsListTemplate" x:CompileBindings="False">
+            <Border Name="border" BorderBrush="#3B70BA" BorderThickness="3"
+                    Margin="5" MaxWidth="110" MaxHeight="110">
+                <Button Name="ListBtn" Tag="{Binding Url}" Background="#5D84BA" 
+                        Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},
+                        Path=DataContext.ShowPokemonCommand}" CommandParameter="{Binding}">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Stretch="Uniform"  Grid.Column="0" 
+                               Source="{Binding Path=Image}" HorizontalAlignment="Center" MaxHeight="75" MaxWidth="75"/>
+                        <TextBlock Text="{Binding Path=Title }" TextAlignment="Center" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                    </StackPanel>
+                </Button>            
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>   
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <Image MaxHeight="180" MaxWidth="180"
+                   Margin="10 10 0 0" 
+                   Source="{Binding CurrentPokemonTile.Image}"/>    
+            
+            <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Title}"
+                           TextAlignment="Left"/>
+                <TextBlock Text="{Binding Number}"
+                           TextAlignment="Left"/>
+                <TextBlock Text="{Binding Health}"
+                           TextAlignment="Left"/>
+                <TextBlock Text="{Binding Attack}"
+                           TextAlignment="Left"/>        
+                <TextBlock Text="{Binding SpecialAttack}"
+                           TextAlignment="Left"/>
+                <TextBlock Text="{Binding Protection}"
+                           TextAlignment="Left"/>
+                <TextBlock Text="{Binding SpecialProtection}"
+                           TextAlignment="Left"/>                
+            </StackPanel>
+            
+            <!--Добавить/удалить из избранного-->
+            <Button Margin="10 0 0 0" x:CompileBindings="False"
+                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},
+                Path=DataContext.LikedButtonOnClick}" CommandParameter="{Binding}" Content="{Binding LikedButtonText}"
+                Background="{Binding LikedButtonColor}" Foreground="White"/>
+        </DockPanel>
+        
+        <!--Покемоны предыдущей эволюции-->
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="2">
+            <TextBlock TextAlignment="Center" Margin="0 0 0 0">Прошлые эволюции</TextBlock>     
+            <ListBox Margin="10 10 0 0" Background="#5D84BA"
+                     ItemsSource="{Binding PokemonsListTiles1}"
+                     ItemTemplate="{StaticResource PokemonsListTemplate }">
+
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+            
+            <!--Покемоны следующей эволюции-->
+            <TextBlock TextAlignment="Center" Margin="0 10 0 0">Следующие эволюции</TextBlock>   
+            <ListBox Margin="10 10 0 0"
+                     ItemsSource="{Binding PokemonsListTiles2}"
+                     ItemTemplate="{StaticResource PokemonsListTemplate }"
+                     Background="#5D84BA">
+
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

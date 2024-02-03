@@ -1,0 +1,94 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:PokemonsDesktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PokemonsDesktop.Views.UserControls.UsersCRUDUC"
+             FontFamily="Comic Sans MS" Background="#5D84BA"
+             x:DataType="viewModels:UsersCRUDVM"
+             x:CompileBindings="True">
+    
+    <UserControl.Resources>
+        <!--Шаблон элемента списка избранных покемонов-->       
+        <DataTemplate x:Key="PokemonsListTemplate" x:CompileBindings="False">
+            <Border Name="border" BorderBrush="#3B70BA" BorderThickness="3"
+                    Margin="5" MaxWidth="340" MaxHeight="150" CornerRadius="5">
+
+                    <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Stretch="Uniform" Source="{Binding Path=Image}" HorizontalAlignment="Center" 
+                               MaxHeight="130" MaxWidth="130" VerticalAlignment="Center"/>
+                        
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding Path=Title }" TextAlignment="Center" VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>  
+    
+    <Grid Margin="5 0 0 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" TextAlignment="Center" Text="{Binding PageTitle}"
+                   FontSize="20" FontWeight="Bold"/>
+        
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="3">
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="120">Логин: </TextBlock>
+                <TextBox VerticalAlignment="Center" Width="200" Text="{Binding LoginTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="120">Почта: </TextBlock>
+                <TextBox VerticalAlignment="Center" Width="200" Text="{Binding EmailTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="130">Последний вход: </TextBlock>
+                <TextBox VerticalAlignment="Center" Width="200" IsEnabled="False" Text="{Binding LastEnterTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="120">Пароль: </TextBlock>
+                <TextBox PasswordChar="*" VerticalAlignment="Center" Width="200" Text="{Binding PasswordTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="120" Margin="0 0 39 0">Администратор: </TextBlock>
+                <CheckBox VerticalAlignment="Center" Width="200" IsChecked="{Binding AdminChanged}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <Button Content="Найти" Command="{Binding FindButtonOnClick}" IsVisible="{Binding FindButtonVisibility}" 
+                        Background="#3B70BA" Margin="0 0 10 0"/>
+                <Button Content="{Binding ActionText}" Command="{Binding ActionButtonOnClick}" Background="#3B70BA"/>
+            </DockPanel>
+            <TextBlock HorizontalAlignment="Center" Text="{Binding StatusText}" Foreground="Red"
+                       FontSize="15"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="0" Grid.Column="3" Grid.RowSpan="5" Grid.ColumnSpan="3" Margin="10 50 0 0" IsVisible="{Binding ShowLikedPokemons}">
+            <TextBlock TextAlignment="Center" Text="Избранные покемоны" FontSize="20" FontWeight="Bold"/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ListBox
+                    Background="#5D84BA"
+                    ItemsSource="{Binding PokemonsListTiles}"
+                    ItemTemplate="{StaticResource PokemonsListTemplate }"
+                    ScrollViewer.VerticalScrollBarVisibility="Visible">
+                </ListBox>  
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</UserControl>

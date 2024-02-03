@@ -1,0 +1,87 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:PokemonsDesktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PokemonsDesktop.Views.UserControls.AccountUC" 
+             x:DataType="viewModels:AccountVM"
+             x:CompileBindings="True"
+             FontFamily="Comic Sans MS" Background="#5D84BA">
+    <UserControl.Resources>
+        <!--Шаблон элемента списка избранных покемонов-->       
+        <DataTemplate x:Key="PokemonsListTemplate" x:CompileBindings="False">
+            <Border Name="border" BorderBrush="#3B70BA" BorderThickness="3"
+                    Margin="5" MaxWidth="340" MaxHeight="150" CornerRadius="5">
+
+                    <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Stretch="Uniform" Source="{Binding Path=Image}" HorizontalAlignment="Center" 
+                               MaxHeight="130" MaxWidth="130" VerticalAlignment="Center"/>
+                        
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding Path=Title }" TextAlignment="Center" VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                            
+                            <StackPanel HorizontalAlignment="Center" Margin="0 10 0 0">
+                                <Button Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},
+                                Path=DataContext.ShowPokemonCommand}" CommandParameter="{Binding}"
+                                        Content="Показать" HorizontalAlignment="Center" Background="#3B70BA"/>
+                        
+                                <Button Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},
+                                Path=DataContext.DeleteFromLiked}" CommandParameter="{Binding}"
+                                        Content="Удалить из избранного" Background="Red" Foreground="White"
+                                        Margin="0 10 0 0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DockPanel>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>  
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="3" Margin="10 0 0 0" VerticalAlignment="Center">
+            <DockPanel Margin="0 0 0 10">
+                <TextBlock Width="145" FontSize="17" FontWeight="Bold">Логин: </TextBlock>
+                <TextBlock Width="400" FontSize="17" Text="{Binding LoginTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 10">
+                <TextBlock Width="145" FontSize="17" FontWeight="Bold">Почта: </TextBlock>
+                <TextBlock Width="400" FontSize="17" Text="{Binding EmailTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 10">
+                <TextBlock Width="160" FontSize="17" FontWeight="Bold">Последний вход: </TextBlock>
+                <TextBlock Width="400" FontSize="17" Text="{Binding LastEnterTB}"/>
+            </DockPanel>
+        </StackPanel>
+        
+        <TextBlock Grid.Row="1" Grid.Column="3" Grid.RowSpan="5" Grid.ColumnSpan="3" Margin="0 0 0 10"
+                   TextAlignment="Center" Text="Избранные покемоны" FontSize="16" FontWeight="Bold"/>
+        
+        <ScrollViewer Grid.Row="1" Grid.Column="3" Grid.RowSpan="5" Grid.ColumnSpan="3" Margin="10 20 0 0"
+                      VerticalScrollBarVisibility="Auto">
+            <ListBox
+                Background="#5D84BA"
+                ItemsSource="{Binding PokemonsListTiles}"
+                ItemTemplate="{StaticResource PokemonsListTemplate }"
+                ScrollViewer.VerticalScrollBarVisibility="Visible">
+            </ListBox>  
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -1,0 +1,84 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:PokemonsDesktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="viewModels:PokemonsCRUDVM"
+             x:Class="PokemonsDesktop.Views.UserControls.PokemonsCRUDUC"
+             x:CompileBindings="True"
+             FontFamily="Comic Sans MS">
+    
+    <Grid Margin="5 0 0 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" TextAlignment="Center" Text="{Binding PageTitle}"
+                   FontSize="20" FontWeight="Bold"/>
+        
+        <StackPanel Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="6" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Height="500"
+                   Width="500"
+                   Source="{Binding PokemonImage}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3">
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="120">Внутренний ID: </TextBlock>
+                <TextBox VerticalAlignment="Center" Width="200" Text="{Binding PokemonURLTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="120">Название: </TextBlock>
+                <TextBox VerticalAlignment="Center" Width="200" Text="{Binding TitleTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="120">Номер: </TextBlock>
+                <TextBox VerticalAlignment="Center" Width="200" Text="{Binding NumberTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="120" TextWrapping="Wrap">Ссылка на изображение в интернете: </TextBlock>
+                <TextBox VerticalAlignment="Center" Width="200" Text="{Binding URLTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="120">Здоровье: </TextBlock>
+                <TextBox VerticalAlignment="Center" Width="200" Text="{Binding HealthTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="120">Атака: </TextBlock>
+                <TextBox VerticalAlignment="Center" Width="200" Text="{Binding AttackTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="120">Спец.Атака: </TextBlock>
+                <TextBox VerticalAlignment="Center" Width="200" Text="{Binding SpecialAttackTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="120">Защита: </TextBlock>
+                <TextBox VerticalAlignment="Center" Width="200" Text="{Binding ProtectionTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <TextBlock VerticalAlignment="Center" Width="120">Спец.Защита: </TextBlock>
+                <TextBox VerticalAlignment="Center" Width="200" Text="{Binding SpecialProtectionTB}"/>
+            </DockPanel>
+            <DockPanel Margin="0 0 0 5">
+                <Button Content="Найти" Command="{Binding FindButtonOnClickCommand}" IsVisible="{Binding FindButtonVisibility}" Background="#3B70BA"/>
+                <Button Content="{Binding ActionText}" Command="{Binding ActionBtnClickCommand}" Background="#3B70BA"/>
+            </DockPanel>
+            <TextBlock HorizontalAlignment="Center" Text="{Binding StatusText}" Foreground="Red"
+                       FontSize="15"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
